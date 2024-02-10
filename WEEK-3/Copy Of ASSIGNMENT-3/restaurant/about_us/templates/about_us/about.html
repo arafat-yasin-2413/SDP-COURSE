@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/aboutUsStyle.css' %}">
+{% endblock csslink %}
+
+{% block title %} 
+About
+{% endblock title %}
+
+{% block content %}
+<h2>This is About Us Page </h2>
+
+<br>
+<br>
+
+<div class="my-5 container">
+    <div>
+        <h2 class="text-center">Best Buffet in Town</h2>
+        <br>
+        <p class="display-1 text-center">
+            We Serve healthy foods
+        </p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <img class="food1" src="{% static 'images/food1.jpg' %}" alt="Food 1 Image">
+
+            </div>
+
+            <div class="col-6">
+                <p class="display-3">
+                    We are available at <br>
+                    Bashundhara R/A, Block-C, <br>
+                    Road No- 10 
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

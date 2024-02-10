@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock csslink %}
+
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+<h2>This is Home Page</h2>
+{% endblock content %}
+
+{% block simple_image %}
+
+
+
+<div class="container">
+    <div class="row main-row">
+        <div class="col-6">
+            <p class="display-1 text-center">
+                Welcome To My <br>
+                Restaurant. Have a <br>
+                Healthy Meal.
+            </p>
+        </div>
+
+        <div class="col-6">
+            <img class="img-fluid p-3" src="{% static 'images/restaurant.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+
+
+{% endblock simple_image %}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+</head>
+<body>
+    
+    <h1 class="text-center">This is Home Page</h1>
+    <div class="container">
+        <hr>
+    </div>
+    <br>
+
+    <br>
+
+    <div class="container" style="height: 500vh;">
+        <h3>
+            add with {{num}} : {{num | add:"5"}}
+        </h3>
+
+        <br>
+
+        <br>
+
+        <h3>
+            {{string_1}}: {{string_1 | addslashes}}
+        </h3>
+
+        <h3>
+            {{name}} : {{name | capfirst}}
+        </h3>
+
+        <h3>
+            "{{ "raju" | center:"15" }}"
+        </h3>
+
+        <h3>
+            {{ string_2 | cut:" " }}
+        </h3>
+
+        <h3>
+            {{ birthday | date:"D d M Y" }}
+        </h3>
+
+        <h3>
+            {{ empty_string | default:"nothing" }}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{ my_dict | dictsort:"name" }}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{ my_dict | dictsort:"age" }}
+        </h3>
+
+        <br>
+        <br>
+
+        <h3>
+            {{ num | divisibleby:"4" }}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{ file_sz | filesizeformat }}
+        </h3>
+
+        <br>
+
+        <h3>
+            first item is :  {{ my_list | first }}
+        </h3>
+
+        <h3>
+            last item is : {{ my_list | last }}
+        </h3>
+
+        <h3>
+            length is : {{ my_list | length }}
+        </h3>
+
+
+        <br>
+
+        <h3>
+            joining : {{string_3 | join:" "}}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{string_3 | linenumbers}}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{name | upper}}
+        </h3>
+
+        <h3>
+            {{name_2 | lower}}
+        </h3>
+
+        <br>
+
+        <h3>
+            Making List : {{name_2 | make_list}}
+        </h3>
+
+        <h3>
+            Showing random value : {{name_2 | random}}
+        </h3>
+
+
+        <br>
+
+
+        <h3>
+            Slicing : {{string_3 | slice:"2"}}
+        </h3>
+
+        <h3>
+            Slugify : {{string_3 | slugify}}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{birthday | time:"H:i"}}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{blog_date | timesince:comment_date}}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{string_3 | title}}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{string_3 | wordcount}}
+        </h3>
+
+
+        <br>
+
+        <h3>
+            {{birthday | date:"SHORT_DATE_FORMAT"}}
+        </h3>
+
+        <h3>
+            {{birthday | date}}
+        </h3>
+
+        <br>
+
+        <br>
+
+        <h3>
+            {{string_2 | truncatechars:6}}
+        </h3>
+
+        <br>
+
+        <h3>
+            {{string_2 | truncatewords:2}}
+        </h3>
+
+
+        <br>
+
+        
+
+    </div>
+    
+
+
+</body>
+</html>

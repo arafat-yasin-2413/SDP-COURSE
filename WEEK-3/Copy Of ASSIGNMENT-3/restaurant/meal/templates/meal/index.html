@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Index
+{% endblock title %}
+
+{% block content %}
+<h2>This is Index </h2>
+<br>
+<h5>Showing Data</h5>
+
+<br>
+<br>
+
+
+<!-- Food Cards -->
+
+<div class="container my-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        {% for meal in meals %}
+
+        <div class="col">
+            <div class="card">
+                <img src="{{meal.strCategoryThumb}}" class="card-img-top p-5 bg-secondary" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{meal.idCategory}}</h5>
+                    <h5 class="card-title">{{meal.strCategory}}</h5>
+                    <p class="card-text">{{meal.strCategoryDescription | truncatewords:"10"}}</p>
+                    <!-- <p class="card-text">{{meal.strCategoryDescription}}</p> -->
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock content %}

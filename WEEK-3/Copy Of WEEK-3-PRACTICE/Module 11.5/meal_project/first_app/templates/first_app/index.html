@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Index
+{% endblock title %}
+
+{% block page_header %}
+<h1>This is Index Page</h1>
+{% endblock page_header %}
+
+
+{% block content %}
+<div class="container my-5 p-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for meal in meals %}
+        <div class="col">
+            <div class="card">
+                <img  src="{{meal.strMealThumb}}" class="card-image-top p-3 img-thumbnail" alt="{{meal.strMeal}} Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{meal.strMeal}}</h5>
+                    <h5 class="card-title">{{meal.idMeal}}</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <!-- {{meal}} -->
+        <!-- {{meal.strMeal}} -->
+        <!-- {{meal.strMealThumb}} -->
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

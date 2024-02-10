@@ -1,0 +1,25 @@
+{% extends 'notes/base.html' %}
+
+{% block page_header %}
+<h1 class="bg-primary fw-1">Notes</h1>
+{% endblock page_header %}
+
+
+{% block content %}
+
+    <ul>
+        {% for note in notes %}
+            <li>
+                <h3>
+                    
+                    <a href="{% url 'note' note.id %}"> {{note.title}} </a>
+                </h3>
+            </li>
+            {% empty %}
+            <h4>No Notes here</h4>
+        {% endfor %}
+    </ul>
+
+    <h3><a href="{% url 'notes:index' %}">Add New Entry</a></h3>
+
+{% endblock content %}

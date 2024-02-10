@@ -1,0 +1,8 @@
+note.html
+<!-- <a href="{% url 'notes:note' note.id %}">Add New Entry</a> -->
+<!-- <a href="{% url 'notes:note' note.id %}">Update entry</a> -->
+
+notes.html:
+<!-- <a href="{% url 'notes:note' note.id %}"> {{note.title}} </a> -->
+
+যদি app_name = 'notes' লিখি তাইলে উপরের লাইন গুলো লিখতে পারবো 

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Show Task
+{% endblock title %}
+
+
+{% block content %}
+
+<!-- Card Section -->
+{% if data %}
+
+<div class="container my-5">
+    <h1 class="text-center my-5">Showing All Tasks</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        {% for task in data %}
+
+        <div class="col">
+            <div class="card" style="background-color: #FEFBE8;">
+
+                <div class="card-body">
+
+                    <h5 class="card-title text-center text-primary">Task Id : {{task.id}}</h5>
+                    <h5 class="card-title fw-bold">{{task.taskTitle}}</h5>
+                    <h5 class="card-title">Assigned on: {{task.assignDate}}</h5>
+                    <p class="card-text fs-4">Description: {{task.taskDescription}}</p>
+
+                    <h4>Categories: </h4>
+                    {% for cat in task.category.all %}
+                    <button class="btn btn-primary btn-sm my-1" disabled>{{cat}}</button>
+                    {% endfor %}
+
+                    {% if task.is_completed == True %}
+                    <br>
+                    <button class="btn btn-success my-1 " disabled >Completed</button>
+                    
+                    {% else %}
+                    <br>
+                    <a href="{% url 'edit_task' task.id %}" class="btn btn-warning my-1">Edit</a>
+                    <a href="{% url 'delete_task' task.id %}" class="btn btn-danger my-1">Delete</a>
+                    
+                    
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+{% else %}
+<h3>No Data Available</h3>
+{% endif %}
+
+
+
+{% endblock content %}

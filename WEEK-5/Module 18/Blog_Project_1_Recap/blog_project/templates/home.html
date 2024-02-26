@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Home
+{% endblock title %}
+
+
+{% block content %}
+<h1>This is Home Page</h1>
+<br>
+
+<!-- Card Section -->
+{% if data %}
+<div class="container my-5 p-3">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+
+        {% for post in data %}
+        <div class="col">
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text">{{post.content}}</p>
+                    <p>
+                        Author: {{post.author.name}}
+                    </p>
+
+                    <p>Category:
+                        {% for cat in post.category.all %}
+                        <button class="btn btn-primary mx-1 my-2 btn-sm" disabled>{{cat.name}}</button>
+
+                        {% endfor %}
+                    </p>
+
+                    <a class="btn btn-warning mx-1 " href="{% url 'edit_post' post.id %}">Edit</a>
+                    <a class="btn btn-danger mx-1 " href="{% url 'delete_post' post.id %}">Delete</a>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% else %}
+<h2>No Data Available</h2>
+{% endif %}
+
+
+
+
+{% endblock content %}

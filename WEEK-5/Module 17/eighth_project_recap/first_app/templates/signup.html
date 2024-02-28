@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+SignUp
+{% endblock title %}
+
+
+{% block body %}
+<style>
+    .success{
+
+        background-color: aquamarine;
+        color: black;
+    }
+</style>
+
+
+    <!-- Toast Section -->
+    {% if messages %}
+
+    {% for m in messages %}
+    <h4 {% if m.tags %} class="{{m.tags}} container w-50 my-5 text-center" {% endif %}>
+        {{m}}
+    </h4>
+    
+    {% endfor %}
+    {% endif %}
+    <!-- Toast Section Ends -->
+
+
+
+    <h1 class="text-center my-5">Sign Up Page</h1>
+    {% load crispy_forms_tags %}
+
+    <div class="container w-50 my-5">
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            <!-- {{form|crispy}} -->
+            {% for fm in form %}
+            {{fm.label_tag}}
+            {{fm}}
+            {{fm.errors|striptags}}
+            {% endfor %}
+
+            <p>
+                <button class="btn btn-primary my-2" type="submit">Submit</button>
+            </p>
+
+            <p>Already have an account ? <a class="btn btn-danger btn-sm" href="{% url 'login' %}">Login</a></p>
+        </form>
+    </div>
+
+    
+
+{% endblock body %}

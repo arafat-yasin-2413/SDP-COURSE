@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+
+
+{% block content %}
+
+<div class="container w-50">
+    <h1 class="text-center my-5">Login Page</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <!-- {{form|crispy}} -->
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="bg-danger text-white p-3">{{error}}</p>
+            {% endfor %}
+        {% endif %}
+
+
+        {% for fm in form %}
+
+        {{fm.label_tag}}
+        {{fm}}
+        <p>{{fm.errors|striptags}}</p>
+
+
+        {% endfor %}
+
+        <button class="btn btn-warning" type="submit">Login</button>
+        <p class="my-2">Don't Have an Account? <a href="{% url 'signup' %}">SignUp</a></p>
+    </form>
+
+</div>
+
+{% endblock content %}

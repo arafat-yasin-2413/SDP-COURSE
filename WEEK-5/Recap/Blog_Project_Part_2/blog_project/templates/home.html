@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="container p-4 my-5">
+    <div class="row d-flex align-items-center">
+        <div class="col-6">
+            <h1>Welcome to Django Blog</h1>
+            <br>
+            <p style="text-align: justify;" > 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error minus aspernatur pariatur, omnis ea culpa repudiandae ipsum vel in saepe repellendus voluptatibus ex inventore perspiciatis. Distinctio molestias iste voluptatibus dolor. Accusamus eveniet, a minima autem dicta eos harum consequuntur tempore dolores, expedita, iste eum officiis natus aliquam ab iure. Delectus architecto, a animi error temporibus maxime quas. Debitis dolor neque aliquam laboriosam possimus fuga tempora consequatur consectetur praesentium ullam. Non quia provident inventore, veniam at ut molestias cum debitis eveniet, alias vel totam assumenda illo incidunt tenetur, blanditiis nulla rerum voluptas fugit voluptates voluptatibus iusto dignissimos deserunt! Ullam, adipisci harum.
+            </p>
+        </div>
+
+        <div class="col-6">
+            <img src="{% static 'header.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container"> -->
+
+<div class="container">
+    <div class="row my-5">
+
+        <div class="col-3 p-4 g-2 rounded"  style="background-color: #959492;">
+            All Categories
+            {% for cat in categories %}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="categories" id="{{cat.id}}">
+                <label class="form-check-label" for="{{cat.id}}">
+                    <a href="{% url 'category_wise_post' cat.slug %}" class="text-decoration-none fw-bold">{{cat.name}}</a>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-9 p-4 g-2 rounded" >
+            
+            <h4>{{data | length}} results found</h4>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for post in data %}
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{post.title}}</h5>
+                            <p class="card-text">{{post.content}}</p>
+
+                            <p>Author : {{post.author.first_name}} {{post.author.last_name}}</p>
+                            <p>
+                                Category:
+
+                                {% for cat in post.category.all %}
+                                <button class="btn btn-primary btn-sm my-1" disabled>{{cat}}</button>
+                                {% endfor %}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- </div> -->
+
+
+
+
+
+{% endblock content %}

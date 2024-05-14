@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+
+{% block content %}
+<h1>This is Home Page</h1>
+
+<br>
+
+{% if data %}
+
+<table class="table table-success table-striped container table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Student Roll</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Father's Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for student in data %}
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>{{student.roll}}</td>
+            <td>{{student.name}}</td>
+            <td> {{student.father_name}} </td>
+            <td> {{student.address}} </td>
+            <td><a href="{% url 'delete_student' student.roll %}" class="btn btn-danger text-white">Delete</a></td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+
+
+{% else %}
+<h2>No Data available to show</h2>
+{% endif %}
+
+
+{% endblock content %}

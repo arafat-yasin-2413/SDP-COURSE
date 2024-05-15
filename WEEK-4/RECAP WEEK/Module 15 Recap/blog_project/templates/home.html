@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Home{% endblock title %}
+
+
+{% block content %}
+<h1>This is Home Page</h1>
+
+<div class="container my-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        
+        {% for post in data %}
+        <div class="col">
+            <div class="card">
+                
+                <div class="card-body">
+                    <h5 class="card-title text-center fw-bold"> {{post.title}} </h5>
+                    <p class="card-text">{{post.content}}</p>
+                    <h5>Author : {{post.author.name}}</h5>
+                    <p>
+                        Categories : 
+                        {% for cat in post.category.all %}
+                        <button class="btn btn-sm btn-success mx-1 my-1">{{cat.name}}</button> 
+                        {% endfor %}
+                    </p>
+                    <p>
+                        <a href="{% url 'edit_post' post.id %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

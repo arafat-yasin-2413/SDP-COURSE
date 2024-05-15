@@ -1,0 +1,8 @@
+from django import forms
+# from models import Author
+from . import models
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = models.Profile
+        fields = '__all__'

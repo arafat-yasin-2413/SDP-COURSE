@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Change Data
+{% endblock title %}
+
+
+{% block content %}
+
+
+
+<form method="post" class="container" novalidate>
+
+    {% if messages %}
+
+    {% for m in messages %}
+
+    <h3 class="bg-{{m.tags}} text-center m-auto my-3 container">{{m}}</h3>
+
+    {% endfor %}
+
+    {% endif %}
+
+
+    <h1 class="text-center my-4">Change User Data</h1>
+    {% csrf_token %}
+
+
+    <!-- {{form | crispy}} -->
+    {% for fm in form %}
+    <p>
+        {{fm.label_tag}}
+        {{fm}}
+    </p>
+
+    <p class="text-danger">{{fm.errors | striptags}}</p>
+
+    {% endfor %}
+
+    <button class="btn btn-success my-2">Save Changes</button>
+</form>
+
+
+
+{% endblock content %}

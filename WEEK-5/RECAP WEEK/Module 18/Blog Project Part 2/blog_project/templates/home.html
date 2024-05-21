@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Home{% endblock title %}
+{% load static %}
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+<!-- Page Heading -->
+
+<div class="row container">
+    <h1 class="text-center">This is Home Page</h1>
+    <div class="col-6 p-3">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi cupiditate fugit suscipit beatae, iusto eos quia facilis unde quos reiciendis? Eos odit vel mollitia repellendus alias nulla est laboriosam tempora vero modi provident, laudantium aut assumenda? Esse laborum tenetur facere, perferendis obcaecati debitis, vitae architecto consequuntur veniam repudiandae ad in. Cumque vel officiis soluta, reiciendis distinctio eos voluptas nisi at ratione saepe beatae maiores eius deleniti accusamus eaque et explicabo, incidunt porro omnis! Quia eos, ex facilis ad magni aperiam enim, error et, sunt fugiat veniam. Fuga omnis fugiat quisquam inventore labore dolore beatae, impedit minus commodi sit molestiae vel aliquid quidem explicabo similique laborum architecto mollitia aperiam, ducimus, ipsum consequuntur aspernatur suscipit quia eum. Ipsam dolor et maiores assumenda ullam vero natus, suscipit laborum aperiam consequatur commodi dicta quaerat.
+
+        </p>
+
+    </div>
+
+    <div class="col-6 p-3 mb-4">
+        <img src="{% static 'header.jpg' %}" alt="image">
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- All Contents starts -->
+
+<div class="row">
+
+    <div class="col-md-2 mx-4  p-3" style="background-color:goldenrod; border-radius: 10px;">
+        <h5>All Categories</h5>
+        {% for cat in category %}
+        <div class="form-check">
+
+            <input class="form-check-input" type="radio" name="category" id="{{cat.id}}" checked>
+            <label class="form-check-label" for="{{cat.id}}">
+                <a class="text-decoration-none text-white"
+                    href="{% url 'category_wise_post' cat.slug %}">{{cat.name}}</a>
+
+            </label>
+        </div>
+        {% endfor %}
+
+    </div>
+
+
+    <div class="col-md-8 mx-2 p-3" style="background-color: blueviolet; border-radius: 10px;">
+        <div class="row row-cols-md-1 row-cols-lg-2 row-cols-xl-3 g-4">
+            <h4 class="text-white text-center">{{data | length}} results found</h4>
+            {% for post in data %}
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title text-center fw-bold"> {{post.title}} </h5>
+                        <p class="card-text">{{post.content}}</p>
+                        <h5>Author : {{post.author.first_name}} {{post.author.last_name}}</h5>
+                        <p>
+                            Categories :
+                            {% for cat in post.category.all %}
+                            <button class="btn btn-sm btn-success mx-1 my-1">{{cat.name}}</button>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock content %}

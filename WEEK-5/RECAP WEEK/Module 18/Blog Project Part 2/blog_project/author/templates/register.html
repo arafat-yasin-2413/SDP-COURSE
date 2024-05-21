@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Add Author{% endblock title %}
+
+
+{% block content %}
+
+<form method="post" class="container w-50">
+    {% csrf_token %}
+    <h1 class="text-center my-3" >{{type}} Form</h1>
+
+        {{form | crispy}}
+
+        <button class="btn btn-primary mb-5">{{type}}</button>
+
+
+
+    </form>
+
+
+{% endblock content %}

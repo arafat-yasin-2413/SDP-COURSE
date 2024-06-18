@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Profile
+{% endblock title %}
+
+
+{% block content %}
+<h1 class="container">Welcome to the Profile of <span class="text-danger">{{user.first_name}} {{user.last_name}} (
+        {{user.username}} )</span></h1>
+<div class="container">
+    <a class="btn btn-success" href="{% url 'show_post_in_profile' %}">Show Posts of <span class="text-danger">{{user.username}}</span></a>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <a class="btn btn-danger" href="{% url 'edit_profile' %}">Edit Profile</a> <br>
+    <a class="btn btn-info my-2" href="{% url 'pass_change' %}">Change Password</a> <br>
+</div>
+
+<div class="container">
+    {% for post in data %}
+    <h2>{{post.title}}</h2>
+    <h2>Author : {{post.author.username}}</h2>
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}
+

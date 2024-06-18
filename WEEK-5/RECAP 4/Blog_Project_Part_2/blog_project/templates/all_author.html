@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All Authors
+{% endblock title %}
+
+{% block content %}
+
+{% if data %}
+
+
+
+<h1 class="container w-50 text-center alert alert-primary mt-5" >Showing all Authors</h1>
+<table class="table container table-bordered w-50 my-5">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for author in data %}
+        <tr>
+            <th scope="row">{{author.id}}</th>
+            <td>{{author.username}}</td>
+            <td>{{author.first_name}}</td>
+            <td>{{author.last_name}}</td>
+            <td>{{author.email}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<h2>There is no Author Yet</h2>
+{% endif %}
+
+
+
+
+{% endblock content %}

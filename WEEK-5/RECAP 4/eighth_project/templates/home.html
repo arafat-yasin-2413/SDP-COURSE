@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock extra_css %}
+
+
+
+{% block content %}
+
+
+
+<h1>This is home</h1>
+
+{% if messages %}
+{% for m in messages %}
+<h4 {%if m.tags %} class="container text-center alert alert-{{m.tags}} " {% endif %}>{{m}}</h4>
+{% endfor %}
+{% endif %}
+
+
+<h2 class="container text-center alert alert-success w-50">Showing All Users</h2>
+<table class="table table-bordered rounded container w-50">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in data %}
+        <tr>
+            <th>{{obj.id}}</th>
+            <td>{{obj.username}}</td>
+            <td>{{obj.first_name}}</td>
+            <td>{{obj.last_name}}</td>
+            <td>{{obj.email}}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+{% endblock content %}

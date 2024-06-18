@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block title %}Pass Change 1{% endblock title %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pass_change1.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+<h1 class="mt-5 container w-50 text-center alert alert-info">This is Password Change 1</h1>
+
+{% if messages %}
+    {% for m in messages %}
+    <h4 {%if m.tags %} class="container text-center alert alert-{{m.tags}} " {% endif %} >{{m}}</h4>
+    {% endfor %}
+{% endif %}
+
+<form method="post" class="container w-50" novalidate>
+    {% csrf_token %}
+    {{form|crispy}}
+    
+
+    
+    <button class="btn btn-primary mb-5">Submit</button>
+    
+</form>
+{% endblock content %}

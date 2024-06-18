@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock extra_css %}
+
+
+
+{% block content %}
+    
+<h1>This is Profile of <span class="text-danger"> {{user.first_name}} {{user.last_name}} ({{user.username}})</span></h1>
+
+{% if messages %}
+    {% for m in messages %}
+    <h4 {%if m.tags %} class="container text-center alert alert-{{m.tags}} " {% endif %} >{{m}}</h4>
+    {% endfor %}
+{% endif %}
+
+<div class="container">
+    <a class="btn btn-warning mb-2" href="{% url 'pass_change1' %}">Change Your Password with Old Password</a>
+    <br><a class="btn btn-info" href="{% url 'pass_change2' %}">Change Your Password without Old Password</a>
+    <br><a class="btn btn-success mt-2 mb-2" href="{% url 'change_user_data' %}">Change User Data</a>
+</div>
+
+
+</form>
+    
+
+
+
+
+
+
+{% endblock content %}

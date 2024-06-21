@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Profile
+{% endblock title %}
+
+
+{% block content %}
+
+
+
+
+<h1 class="container">Welcome to the Profile of <span class="text-danger">{{user.first_name}} {{user.last_name}} (
+        {{user.username}} )</span></h1>
+<div class="container">
+    <a class="btn btn-success" href="{% url 'show_post_in_profile' %}">Show Posts of <span
+            class="text-danger">{{user.username}}</span></a>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <a class="btn btn-danger" href="{% url 'edit_profile' %}">Edit Profile</a> <br>
+    <a class="btn btn-info my-2" href="{% url 'pass_change' %}">Change Password</a> <br>
+</div>
+
+<div class="container">
+    <div class="col-md-8 mx-2 p-3" style="background-color: blueviolet; border-radius: 10px;">
+        <div class="row row-cols-md-1 row-cols-lg-2 row-cols-xl-3 g-4">
+            <h4 class="text-white text-center">{{data | length}} results found</h4>
+            {% for post in data %}
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title text-center fw-bold"> {{post.title}} </h5>
+                        <p class="card-text">{{post.content}}</p>
+                        <h5>Author : {{post.author.first_name}} {{post.author.last_name}}</h5>
+                        
+                        
+                        <p>
+                            Categories :
+                            {% for cat in post.category.all %}
+                            <button class="btn btn-sm btn-success mx-1 my-1">{{cat.name}}</button>
+                            {% endfor %}
+                        </p>
+
+                        
+                        <p>
+                            <a class="btn btn-warning" href="{% url 'edit_post' post.id %}">Edit</a>
+                            <a class="btn btn-danger" href="{% url 'delete_post' post.id %}">Delete</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock content %}

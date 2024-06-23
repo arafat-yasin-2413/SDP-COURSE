@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+</head>
+<body>
+    <h1>Blog List page</h1>
+
+    <div class="container">
+        {% for blog in data %}
+        <h3>{{blog.title}}</h3>
+        <p>{{blog.content}}</p>
+        <img src="{{blog.image.url}}" alt="image of {{blog.title}}">
+        {% endfor %}
+    </div>
+</body>
+</html>
+

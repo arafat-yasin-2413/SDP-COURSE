@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Delete Album {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>Are you sure want to delete this Album? </h1>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger">Confirm Delete</button>
+        <a class="btn btn-primary" href="{% url 'homepage' %}">Cancel</a>
+    </form>
+</div>
+
+
+{% endblock content %}

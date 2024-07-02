@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Add Brand
+{% endblock title %}
+
+{% block content %}
+
+<div class="container my-5">
+    <h1 class="text-center my-2">Add Brand Form</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        {{form|crispy}}
+
+        <!-- {% for fm in form %}
+        {{fm.label_tag}} <br>
+        {{fm}}
+        {{fm.errors | striptags}} <br>
+        {% endfor %} -->
+
+        <button class="btn btn-primary mb-1">
+            Add this Brand
+        </button>
+
+        
+    </form>
+    </form>
+</div>
+
+
+
+{% endblock content %}

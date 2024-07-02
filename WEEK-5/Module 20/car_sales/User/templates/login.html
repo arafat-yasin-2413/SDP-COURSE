@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %}
+
+<div class="container w-50 my-5">
+    <h1 class="text-center my-2">Login Form</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        {{form|crispy}}
+
+        <!-- {% for fm in form %}
+        {{fm.label_tag}} <br>
+        {{fm}}
+        {{fm.errors | striptags}} <br>
+        {% endfor %} -->
+
+        <button class="btn btn-primary mb-1">
+            Login
+        </button>
+
+        <p>
+            <small>Don't have an Account? <span><a class="text-decoration-none" href="{% url 'signup' %}">SignUp</a></span></small>
+        </p>
+    </form>
+    </form>
+</div>
+
+
+
+{% endblock content %}

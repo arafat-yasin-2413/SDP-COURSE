@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block content %}
+
+<div class="container my-5">
+    <h1>This is Profile Page</h1>
+    <h2>Hello <span class="text-danger">{{user.first_name}} {{user.last_name}} ({{user.username}})</span></h2>
+
+
+    <br>
+
+    <p>
+        <a class="btn btn-success mx-1 my-1" href="{% url 'edit_profile' %}">Edit Profile</a>
+        <a class="btn btn-info mx-1 my-1" href="{% url 'pass_change' %}">Change Your Password</a>
+    </p>
+
+</div>
+
+<div class="container mb-5">
+    <h2 class="text-center alert alert-success">Order History</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Car Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Purchase Date</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{order.user.username}}</td>
+                <td>{{order.car.title}}</td>
+                <td><img class="img-fluid" src="{{order.car.image.url}}" alt=""></td>
+                <td>{{order.created_on}}</td>
+                <td>{{order.quantity}}</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}
